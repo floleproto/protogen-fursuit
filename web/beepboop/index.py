@@ -8,4 +8,9 @@ app = Flask(__name__)
 @app.route('/')
 def main():
    #return 'Hello'
-   return render_template("main.html")
+   return render_template("led/main.html")
+
+@app.route('/led')
+def led():
+   #return 'Hello'
+   return render_template("led/main.html")
