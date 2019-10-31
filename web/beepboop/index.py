@@ -1,4 +1,5 @@
 from flask import Flask, escape, request, render_template
+import os
 
 app = Flask(__name__)
 
@@ -14,3 +15,12 @@ def main():
 def led():
    #return 'Hello'
    return render_template("led/main.html")
+
+@app.route('/api/addmusic', methods=['GET'])
+def addmusic():
+   
+   if "url" in request.args:
+      os.system("cd /home/pi/fursuit/lib && node addmusic.js " + request.args["url"])
+      return {"msg" : "Success"}
+   else:
+      return {"msg" : "No URL provided"}
