@@ -1,5 +1,6 @@
 from flask import Flask, escape, request, render_template
 import os
+#import mpd
 
 app = Flask(__name__)
 
@@ -16,6 +17,11 @@ def led():
    #return 'Hello'
    return render_template("led/main.html")
 
+@app.route('/mpd')
+def mpd():
+   #return 'Hello'
+   return render_template("mpd/main.html")
+
 @app.route('/api/addmusic', methods=['GET'])
 def addmusic():
    
@@ -24,3 +30,5 @@ def addmusic():
       return {"msg" : "Success"}
    else:
       return {"msg" : "No URL provided"}
+
+#mpd.ForcePlaySong("REMIX (Orchestral)  - 'Funa' (Galshi Revolution) - TahuyNet-Qzp3opSNgF4")
